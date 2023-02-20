@@ -153,8 +153,6 @@ header {
   perspective: 1000px;
   border-radius: 15px;
   border: 1px solid #808080;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
 }
 .card-front {
   width: 100%;
@@ -199,7 +197,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  /* transform: rotateY(180deg); */
+  transform: rotateY(180deg);
   text-align: center;
   padding: 20px;
   backface-visibility: hidden;
@@ -229,11 +227,16 @@ header {
 .product-duration span {
   font-weight: 600;
 }
-
+.product.bot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .flip-icon {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  /* position: absolute; */
+  /* bottom: 20px;
+  right: 20px; */
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -282,8 +285,10 @@ header {
 
 .card.flipped .card-front {
   display: none;
+  transform: rotateY(180deg);
 }
 
 .card.flipped .card-back {
   display: block;
+  transform: rotateY(0);
 }
