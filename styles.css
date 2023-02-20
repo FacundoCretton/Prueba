@@ -158,9 +158,6 @@ header {
   width: 100%;
   height: 100%;
   position: absolute;
-  /* top: 0;
-  left: 0; */
-  /* padding: 20px; */
   backface-visibility: hidden;
 }
 .product-card-image {
@@ -191,18 +188,6 @@ header {
   margin: 20px;
 }
 
-.card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: rotateY(180deg);
-  text-align: center;
-  padding: 20px;
-  backface-visibility: hidden;
-}
-
 .product-name {
   margin-top: 20px;
   margin-bottom: 0;
@@ -214,7 +199,6 @@ header {
 .product-duration {
   margin-top: 5px;
   padding: 20px;
-  /* flex-direction: column; */
   justify-content: space-between;
   display: flex;
   font-size: 15px;
@@ -234,11 +218,44 @@ header {
   align-items: center;
 }
 .flip-icon {
-  /* position: absolute; */
-  /* bottom: 20px;
-  right: 20px; */
   font-size: 1.5rem;
   cursor: pointer;
+}
+.btn-flip {
+  display: flex;
+  align-items: center;
+}
+
+.btn-buy {
+  margin-right: 70px;
+}
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+  text-align: center;
+  padding: 20px;
+  backface-visibility: hidden;
+}
+.itinerario {
+  white-space: pre-line;
+  margin: 20px 0;
+  font-size: 10px;
+}
+.itinerario span {
+  font-weight: 700;
+}
+.card.flipped .card-front {
+  display: none;
+  transform: rotateY(180deg);
+}
+
+.card.flipped .card-back {
+  display: block;
+  transform: rotateY(0);
 }
 
 /* .arrow {
@@ -282,13 +299,16 @@ header {
 .arrow-left:before {
   transform: rotate(-135deg);
 } */
-
-.card.flipped .card-front {
-  display: none;
-  transform: rotateY(180deg);
+.card-back .itinerario {
+  display: flex;
+  flex-direction: column;
 }
 
-.card.flipped .card-back {
-  display: block;
-  transform: rotateY(0);
+.itinerario li {
+  min-height: 1.5em;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
 }
