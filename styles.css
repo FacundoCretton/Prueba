@@ -193,18 +193,17 @@ header {
   margin: 20px;
 }
 
-/* .card-back {
+.card-back {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
   text-align: center;
   padding: 20px;
   backface-visibility: hidden;
-} */
+}
 
 .product-name {
   margin-top: 20px;
@@ -230,10 +229,6 @@ header {
 .product-duration span {
   font-weight: 600;
 }
-/* .product-duration {
-  margin-top: 5px;
-  margin-bottom: 20px;
-} */
 
 .flip-icon {
   position: absolute;
@@ -285,28 +280,10 @@ header {
   transform: rotate(-135deg);
 } */
 
-.card-container.flip {
-  transform: rotateY(180deg);
+.card.flipped .card-front {
+  display: none;
 }
 
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* oculta el contenido de la parte posterior de la tarjeta */
-}
-
-.card-front {
-  transform: rotateY(0deg); /* la tarjeta se muestra de frente por defecto */
-}
-
-.card-back {
-  transform: rotateY(
-    180deg
-  ); /* la tarjeta está girada 180 grados en el eje Y */
-}
-
-.card-container.flipped .card {
-  transform: rotateY(180deg);
+.card.flipped .card-back {
+  display: block;
 }
