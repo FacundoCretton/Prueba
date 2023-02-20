@@ -1,0 +1,118 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background-color: #2e2e2e;
+  color: #fff;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0px 25px;
+  align-items: center;
+  height: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+.navbar,
+.navbar-list {
+  display: flex;
+  margin: auto;
+  padding: 0px 20px;
+  align-items: center;
+  justify-content: center;
+}
+.navbar {
+  gap: 120px;
+}
+.navbar-list {
+  gap: 100px;
+}
+
+.navbar-list li {
+  margin: 0 1rem;
+  font-size: 13px;
+}
+
+.navbar-list a {
+  color: #fff;
+}
+
+.navbar-list a:hover {
+  color: #f97bbf;
+}
+/* main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(30, 30, 30);
+} */
+
+/* ----------HERO------------ */
+
+#hero {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.342), rgba(0, 0, 0, 0.342)),
+    url(./Assets/Img/Hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+.hero-container {
+  width: 90%;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+#hero .info h1 {
+  font-size: 35px;
+  /* text-transform: uppercase; */
+  margin-bottom: 1rem;
+}
+#hero .info h2 {
+  font-size: 25px;
+  margin-bottom: 2rem;
+}
+#hero .info p {
+  font-size: 20px;
+  max-width: 60%;
+}
+#hero .info button {
+  padding: 12px 24px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#hero .info button:hover {
+  background-color: #333;
+  color: #fff;
+}
