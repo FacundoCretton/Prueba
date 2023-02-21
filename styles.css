@@ -130,14 +130,15 @@ header {
 }
 .products-container {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  width: 90%;
 }
+
 .categoria-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
+
 .product-cards {
   display: flex;
   align-items: center;
