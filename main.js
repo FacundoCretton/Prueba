@@ -1,30 +1,32 @@
 // Contenedor de productos
 const products = document.querySelector('.categoria-container');
 // Selecciona todos los elementos con la clase ".flip-icon"
-const flipIcons = document.querySelectorAll('.flip-icon');
 const arrow = document.querySelector(".arrow");
 
-// Función para renderizar un producto
 const renderProduct = (product) => {
   const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
-  return `
-    <div class="product-cards" data-categoria="${categoria}">
-      <div class="card-container">
-        <div class="card">
-          <div class="card-front">
-            <div class="product-card-image" style="background-image: url(${backgroundImg})">
-              <h2 class="product-name">${nombre}</h2>
-            </div>
-            <div class="product-price">
-              <p>Precio</p>
-              <span>$${precio}</span>
-            </div>
-            <div class="product-duration">
-              <p>Duracion</p> 
-              <span>${duracion} noches</span> 
-            </div>
-            <div class="product-bot">
-              <div class="btn-flip">
+
+  // crear la tarjeta de producto
+  const productCard = document.createElement('div');
+  productCard.classList.add('product-cards');
+  productCard.dataset.categoria = categoria;
+  productCard.innerHTML = `
+    <div class="card-container">
+      <div class="card">
+        <div class="card-front">
+          <div class="product-card-image" style="background-image: url(${backgroundImg})">
+            <h2 class="product-name">${nombre}</h2>
+          </div>
+          <div class="product-price">
+            <p>Precio</p>
+            <span>$${precio}</span>
+          </div>
+          <div class="product-duration">
+            <p>Duracion</p> 
+            <span>${duracion} noches</span> 
+          </div>
+          <div class="product-bot">
+            <div class="btn-flip">
               <button class="btn-buy">Add</button>
               <div class="flip-icon"><i class="fas fa-arrow-circle-right"></i></div>
             </div>                  
@@ -37,28 +39,19 @@ const renderProduct = (product) => {
               ${itinerario.map((dia) => `<li><span>${dia}</span></li>`).join('')}
             </ul>
           </div>
+          <div class="flip-icon"><i class="fas fa-arrow-circle-left"></i></div>
         </div>
       </div>
     </div>
-  </div>
-`;}
+  `;
 
-// // Agrega un controlador de eventos a cada icono de flip
+  // obtener el contenedor de categoría correspondiente
+  const categoriaContainer = document.querySelector(`[data-categoria="${categoria}"]`);
 
+  // insertar la tarjeta de producto en el contenedor de categoría
+  categoriaContainer.appendChild(productCard);
+};
 
-
-flipIcons.forEach(flipIcon => {
-  flipIcon.addEventListener('click', function() {
-    const card = flipIcon.parentNode.parentNode;
-    card.classList.add('flipped');
-    flipIcon.classList.add('rotate-icon');
-
-    flipIcon.addEventListener('click', function() {
-      card.classList.remove('flipped');
-      flipIcon.classList.remove('rotate-icon');
-    });
-  });
-});
 
 
 
@@ -183,6 +176,17 @@ const closeOnOverlayClick = () => {
 	overlay.classList.remove("show-overlay");
 };
 
+window.addEventListener('load', function() {
+  const flipIcons = document.querySelectorAll('.flip-icon');
+
+  flipIcons.forEach(flipIcon => {
+    flipIcon.addEventListener('click', function() {
+      const card = flipIcon.closest('.card');
+      card.classList.toggle('flipped');
+    });
+  });
+  
+});
 
 const init = () => {
 	renderProducts();

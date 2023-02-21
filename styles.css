@@ -132,11 +132,26 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 90%;
 }
 
 .categoria-container {
   display: flex;
+  /* flex-direction: column; */
+  align-items: center;
   justify-content: center;
+  /* height: 400px; */
+  margin-bottom: 20px;
+}
+
+.categoria-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .product-cards {
@@ -325,5 +340,6 @@ header {
 }
 
 .rotate-icon {
+  transition: transform 0.8s;
   transform: rotate(180deg);
 }
