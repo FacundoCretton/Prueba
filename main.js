@@ -1,5 +1,5 @@
 // Contenedor de productos
-const products = document.querySelector(".categoria-container");
+const products = document.querySelector('.categoria-container');
 // Selecciona todos los elementos con la clase ".flip-icon"
 const flipIcons = document.querySelectorAll('.flip-icon');
 
@@ -13,7 +13,7 @@ flipIcons.forEach((flipIcon) => {
     // Encuentra la tarjeta del producto más cercana y togllea la clase 'flipped'
     const card = flipIcon.closest(".card");
     card.classList.toggle("flipped");
-  });
+  })
 });
 
 
@@ -175,6 +175,7 @@ const closeOnOverlayClick = () => {
 	cartMenu.classList.remove("open-cart");
 	overlay.classList.remove("show-overlay");
 };
+
 
 const init = () => {
 	renderProducts();
