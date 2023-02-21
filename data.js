@@ -281,7 +281,7 @@ const splitProducts = (size) => {
 };
 
 const productsController = {
-	dividedProducts: splitProducts(50),
+	dividedProducts: splitProducts(4),
 	nextProductsIndex: 1,
-	productsLimit: splitProducts(50).length,
+	productsLimit: splitProducts(4).length,
 };
