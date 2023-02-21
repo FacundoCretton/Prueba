@@ -1,22 +1,9 @@
 // Contenedor de productos
 const products = document.querySelector('.categoria-container');
 // Selecciona todos los elementos con la clase ".flip-icon"
-const flipIcons = document.querySelectorAll('.flip-icon');
+ const flipIcons = document.querySelectorAll('.flip-icon');
 
 const arrow = document.querySelector(".arrow");
-
-
-
-// Agrega un controlador de eventos a cada icono de flip
-flipIcons.forEach((flipIcon) => {
-  flipIcon.addEventListener("click", () => {
-    // Encuentra la tarjeta del producto más cercana y togllea la clase 'flipped'
-    const card = flipIcon.closest(".card");
-    card.classList.toggle("flipped");
-  })
-});
-
-
 
 // Función para renderizar un producto
 const renderProduct = (product) => {
@@ -56,6 +43,18 @@ const renderProduct = (product) => {
     </div>
   </div>
 `;}
+
+// Agrega un controlador de eventos a cada icono de flip
+flipIcons.forEach((flipIcon) => {
+  flipIcon.addEventListener("click", () => {
+    // Encuentra la tarjeta del producto más cercana y togllea la clase 'flipped'
+    const card = flipIcon.closest(".card");
+    card.classList.toggle("flipped");
+  })
+});
+
+
+
 
 const renderDividedProducts = (index = 0) => {
 	products.innerHTML += productsController.dividedProducts[index]
