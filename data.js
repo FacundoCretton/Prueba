@@ -270,3 +270,18 @@ const productsData = [
 
 	
 ];
+
+const splitProducts = (size) => {
+	let dividedProducts = [];
+
+	for (let i = 0; i < productsData.length; i += size) {
+		dividedProducts.push(productsData.slice(i, i + size));
+	}
+	return dividedProducts;
+};
+
+const productsController = {
+	dividedProducts: splitProducts(4),
+	nextProductsIndex: 1,
+	productsLimit: splitProducts(4).length,
+};

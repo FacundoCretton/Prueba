@@ -319,3 +319,7 @@ header {
 .arrow-left:before {
   transform: rotate(-135deg);
 }
+
+.hidden {
+  display: none;
+}
