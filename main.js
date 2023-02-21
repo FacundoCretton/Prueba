@@ -1,8 +1,7 @@
 // Contenedor de productos
 const products = document.querySelector('.categoria-container');
 // Selecciona todos los elementos con la clase ".flip-icon"
- const flipIcons = document.querySelectorAll('.flip-icon');
-
+const flipIcons = document.querySelectorAll('.flip-icon');
 const arrow = document.querySelector(".arrow");
 
 // Función para renderizar un producto
@@ -44,14 +43,23 @@ const renderProduct = (product) => {
   </div>
 `;}
 
-// Agrega un controlador de eventos a cada icono de flip
-flipIcons.forEach((flipIcon) => {
-  flipIcon.addEventListener("click", () => {
-    // Encuentra la tarjeta del producto más cercana y togllea la clase 'flipped'
-    const card = flipIcon.closest(".card");
-    card.classList.toggle("flipped");
-  })
+// // Agrega un controlador de eventos a cada icono de flip
+
+
+
+flipIcons.forEach(flipIcon => {
+  flipIcon.addEventListener('click', function() {
+    const card = flipIcon.parentNode.parentNode;
+    card.classList.add('flipped');
+    flipIcon.classList.add('rotate-icon');
+
+    flipIcon.addEventListener('click', function() {
+      card.classList.remove('flipped');
+      flipIcon.classList.remove('rotate-icon');
+    });
+  });
 });
+
 
 
 
@@ -178,7 +186,7 @@ const closeOnOverlayClick = () => {
 
 const init = () => {
 	renderProducts();
-  flipIcons()
+  
 	categories.addEventListener("click", applyFilter);
 	btnLoad.addEventListener("click", showMoreProducts);
 	barsBtn.addEventListener("click", toggleMenu);

@@ -324,6 +324,6 @@ header {
   display: none;
 }
 
-.flipped {
+.rotate-icon {
   transform: rotate(180deg);
 }
