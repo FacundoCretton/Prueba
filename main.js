@@ -1,26 +1,19 @@
-// let productsData = []
-
 // Contenedor de productos
 const products = document.querySelector('.categoria-container');
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
-
-
+const aside = document.querySelector("aside");
 
 botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
   aside.classList.remove("aside-visible");
 }))
 
+const renderProduct = (productsData) => {
+  let productsHTML = "";
+  productsData.forEach(product => {
+    const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
 
-
-
-const renderProduct = (product) => {
-	// if (!product) {
-	// 	return;
-	//   }
-  const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
-
-	return `
+    productsHTML += `
     <div class="card-container">
       <div class="card">
         <div class="card-front">
@@ -54,7 +47,11 @@ const renderProduct = (product) => {
       </div>
     </div>
   `;
-};
+  });
+  products.innerHTML = productsHTML;
+}
+
+renderProduct(productsData);
 
 botonesCategorias.forEach(boton => {
   boton.addEventListener("click", (e) => {
@@ -162,34 +159,34 @@ window.addEventListener('load', function() {
 });
 // ------------------------------------------------------ARROW---------------------------------
 
-// Obtener todas las categorías
-const categorias = document.querySelectorAll('.categoria-container');
+// // Obtener todas las categorías
+// const categorias = document.querySelectorAll('.categoria-container');
 
-// Recorrer cada categoría y agregar los listeners a las flechas
-categorias.forEach(categoria => {
-  // Obtener los botones de flecha
-  const leftArrow = categoria.previousElementSibling.querySelector('.arrow-left');
-  const rightArrow = categoria.previousElementSibling.querySelector('.arrow-right');
+// // Recorrer cada categoría y agregar los listeners a las flechas
+// categorias.forEach(categoria => {
+//   // Obtener los botones de flecha
+//   const leftArrow = categoria.previousElementSibling.querySelector('.arrow-left');
+//   const rightArrow = categoria.previousElementSibling.querySelector('.arrow-right');
 
-  // Obtener el contenedor de productos
-  const categoriaContainer = categoria;
+//   // Obtener el contenedor de productos
+//   const categoriaContainer = categoria;
 
-  // Calcular el ancho total de los productos
-  let productWidth = 0;
-  const products = categoriaContainer.children;
-  for (let i = 0; i < products.length; i++) {
-    productWidth += products[i].offsetWidth;
-  }
+//   // Calcular el ancho total de los productos
+//   let productWidth = 0;
+//   const products = categoriaContainer.children;
+//   for (let i = 0; i < products.length; i++) {
+//     productWidth += products[i].offsetWidth;
+//   }
 
-  // Agregar listeners a las flechas
-  leftArrow.addEventListener('click', () => {
-    categoriaContainer.scrollLeft -= 300;
-  });
+//   // Agregar listeners a las flechas
+//   leftArrow.addEventListener('click', () => {
+//     categoriaContainer.scrollLeft -= 300;
+//   });
 
-  rightArrow.addEventListener('click', () => {
-    categoriaContainer.scrollLeft += 300;
-  });
-});
+//   rightArrow.addEventListener('click', () => {
+//     categoriaContainer.scrollLeft += 300;
+//   });
+// });
 
 
  
