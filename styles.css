@@ -144,6 +144,9 @@ header {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
 }
 
 .categoria-container-tit {
@@ -161,6 +164,8 @@ header {
   width: 100%;
   overflow: hidden;
   position: relative;
+  /* width: 450px; */
+  margin-right: 10px;
 }
 .card-container {
   display: flex;
