@@ -155,32 +155,42 @@ let totalProducts = productCount;
 
 
 
-const showNextProduct = (direction) => {
-	if (direction === "right") {
-	  currentProductIndex = (currentProductIndex + 1) % totalProducts;
-	} else {
-	  currentProductIndex = (currentProductIndex - 1 + totalProducts) % totalProducts;
-	}
-	renderProduct(products[currentProductIndex]);
-	console.log("HOLAAAAAAAAAA");
-};
+const showNextProduct = (direction, container) => {
+  const cards = container.querySelectorAll('.card');
+  let startIndex = currentProductIndex;
 
-function showPreviousProduct() {
-	currentProductIndex--;
-	if (currentProductIndex < 0) {
-	  currentProductIndex = productCount - 1;
-	}
-	renderProduct(products[currentProductIndex]);
-}
+  if (direction === 'right') {
+    startIndex += 5;
+  } else {
+    startIndex -= 5;
+  }
+
+  if (startIndex < 0) {
+    startIndex = 0;
+  } else if (startIndex >= cards.length) {
+    startIndex = cards.length - 1;
+  }
+
+  for (let i = 0; i < cards.length; i++) {
+    if (i < startIndex || i >= startIndex + 5) {
+      cards[i].classList.add('hidden');
+    } else {
+      cards[i].classList.remove('hidden');
+    }
+  }
+
+  currentProductIndex = startIndex;
+};
 
   
 rightArrow.addEventListener('click', () => {
-	showNextProduct("right");
+  showNextProduct("right", containers[i]);
 });
-  
+
 leftArrow.addEventListener('click', () => {
-	showNextProduct("left");
+  showNextProduct("left", containers[i]);
 });
+
   
  
 const init = () => {
