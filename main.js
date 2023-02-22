@@ -142,45 +142,27 @@ window.addEventListener('load', function() {
   });
   
 });
-// ------------------------------------------------------ARROW--------------------
-const leftArrow = document.querySelector('.left-arrow');
-const rightArrow = document.querySelector('.right-arrow');
+// ------------------------------------------------------ARROW---------------------------------
 
+const arrows = document.querySelectorAll(".arrow");
+const containers = document.querySelectorAll(".categoria-container");
 
-let currentProductIndex = 0;
-const productCount = 6; 
-let totalProducts = productCount;
-
-
-
-
-const showNextProduct = (direction) => {
-	if (direction === "right") {
-	  currentProductIndex = (currentProductIndex + 1) % totalProducts;
-	} else {
-	  currentProductIndex = (currentProductIndex - 1 + totalProducts) % totalProducts;
-	}
-	renderProduct(products[currentProductIndex]);
-	console.log("HOLAAAAAAAAAA");
-};
-
-function showPreviousProduct() {
-	currentProductIndex--;
-	if (currentProductIndex < 0) {
-	  currentProductIndex = productCount - 1;
-	}
-	renderProduct(products[currentProductIndex]);
-}
-
-  
-rightArrow.addEventListener('click', () => {
-	showNextProduct("right");
+arrows.forEach((arrow, i) => {
+  const itemsCount = containers[i].querySelectorAll(".card").length;
+  let clickCount = 0;
+  arrow.addEventListener("click", () => {
+    clickCount++;
+    if (itemsCount - (5 + clickCount) >= 0) {
+      containers[i].style.transform = `translateX(${
+        containers[i].computedStyleMap().get("transform")[0].x.value - 455
+      }px)`;
+    } else {
+      containers[i].style.transform = "translateX(0)";
+      clickCount = 0;
+    }
+  });
 });
-  
-leftArrow.addEventListener('click', () => {
-	showNextProduct("left");
-});
-  
+
  
 const init = () => {
 	renderProducts();
