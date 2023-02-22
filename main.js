@@ -60,11 +60,11 @@ const renderProduct = (product) => {
 
 
 
-const renderDividedProducts = (index = 0) => {
-	products.innerHTML += productsController.dividedProducts[index]
-		.map(renderProduct)
-		.join("");
-};
+const renderDividedProducts = (container, index = 0) => {
+	container.innerHTML += productsController.dividedProducts[index]
+	  .map(renderProduct)
+	  .join("");
+  };
 
 const renderFilteredProducts = (category) => {
 	const productsList = productsData.filter((product) => {
@@ -129,49 +129,7 @@ const isLastIndexOf = () => {
 
 
 
-const toggleMenu = () => {
-	barsMenu.classList.toggle("open-menu");
-	if (cartMenu.classList.contains("open-cart")) {
-		cartMenu.classList.remove("open-cart");
-		return;
-	}
-	overlay.classList.toggle("show-overlay");
-};
 
-const toggleCart = () => {
-	cartMenu.classList.toggle("open-cart");
-	if (barsMenu.classList.contains("open-menu")) {
-		barsMenu.classList.remove("open-menu");
-		return;
-	}
-	overlay.classList.toggle("show-overlay");
-};
-
-const closeOnClick = (e) => {
-	if (!e.target.classList.contains("navbar-link")) {
-		return;
-	}
-	barsMenu.classList.remove("open-menu");
-	overlay.classList.remove("show-overlay");
-};
-
-const closeOnScroll = () => {
-	if (
-		!barsMenu.classList.contains("open-menu") &&
-		!cartMenu.classList.contains("open-cart")
-	) {
-		return;
-	}
-	barsMenu.classList.remove("open-menu");
-	cartMenu.classList.remove("open-cart");
-	overlay.classList.remove("show-overlay");
-};
-
-const closeOnOverlayClick = () => {
-	barsMenu.classList.remove("open-menu");
-	cartMenu.classList.remove("open-cart");
-	overlay.classList.remove("show-overlay");
-};
 
 window.addEventListener('load', function() {
   const flipIcons = document.querySelectorAll('.flip-icon');
