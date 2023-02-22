@@ -1,9 +1,12 @@
 // Contenedor de productos
 const products = document.querySelector('.categoria-container');
 // Selecciona todos los elementos con la clase ".flip-icon"
-const arrow = document.querySelector(".arrow");
-console.log(products);
+
+
 const renderProduct = (product) => {
+	if (!product) {
+		return;
+	  }
   const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
 
   // crear la tarjeta de producto
@@ -124,13 +127,7 @@ const isLastIndexOf = () => {
 	);
 };
 
-const showMoreProducts = () => {
-	renderProducts(productsController.nextProductsIndex);
-	productsController.nextProductsIndex++;
-	if (isLastIndexOf()) {
-		btnLoad.classList.add("hidden");
-	}
-};
+
 
 const toggleMenu = () => {
 	barsMenu.classList.toggle("open-menu");
@@ -191,26 +188,39 @@ window.addEventListener('load', function() {
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 
-leftArrow.addEventListener('click', showPreviousProduct);
-rightArrow.addEventListener('click', showNextProduct);
-let currentProductIndex = 0;
-const productCount = 10; 
 
-function showNextProduct() {
-  currentProductIndex++;
-  if (currentProductIndex >= productCount) {
-    currentProductIndex = 0;
-  }
-  renderProduct(currentProductIndex);
-}
+let currentProductIndex = 0;
+const productCount = 6; 
+let totalProducts = products.length;
+
+
+
+const showNextProduct = (direction) => {
+	if (direction === "right") {
+	  currentProductIndex = (currentProductIndex + 1) % totalProducts;
+	} else {
+	  currentProductIndex = (currentProductIndex - 1 + totalProducts) % totalProducts;
+	}
+	renderProduct(products[currentProductIndex]);
+};
+
 function showPreviousProduct() {
 	currentProductIndex--;
 	if (currentProductIndex < 0) {
 	  currentProductIndex = productCount - 1;
 	}
-	renderProduct(currentProductIndex);
-  }
-
+	renderProduct(products[currentProductIndex]);
+}
+  
+rightArrow.addEventListener('click', () => {
+	showNextProduct("right");
+});
+  
+leftArrow.addEventListener('click', () => {
+	showNextProduct("left");
+});
+  
+ 
 const init = () => {
 	renderProducts();
   

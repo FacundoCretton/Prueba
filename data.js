@@ -1,4 +1,4 @@
-const productsData = [
+ const productsData = [
 	{
 		id: 1,
 		nombre: 'Descubriendo el Sur',
