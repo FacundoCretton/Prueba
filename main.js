@@ -147,21 +147,22 @@ window.addEventListener('load', function() {
 const arrows = document.querySelectorAll(".arrow");
 const containers = document.querySelectorAll(".categoria-container");
 
+containers.forEach(container => container.style.transform = "translateX(0)");
+
 arrows.forEach((arrow, i) => {
   const itemsCount = containers[i].querySelectorAll(".card").length;
   let clickCount = 0;
   arrow.addEventListener("click", () => {
     clickCount++;
     if (itemsCount - (5 + clickCount) >= 0) {
-      containers[i].style.transform = `translateX(${
-        containers[i].computedStyleMap().get("transform")[0].x.value - 455
-      }px)`;
+      containers[i].style.transform += `translateX(-455px)`;
     } else {
       containers[i].style.transform = "translateX(0)";
       clickCount = 0;
     }
   });
 });
+
 
  
 const init = () => {
