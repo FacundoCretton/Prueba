@@ -1,85 +1,63 @@
 // Contenedor de productos
-const products = document.querySelector('.categoria-container');
+const products = document.querySelectorAll('.categoria-container');
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 const aside = document.querySelector("aside");
+
+
 
 botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
   aside.classList.remove("aside-visible");
 }))
 
-const renderProduct = (productsData) => {
-  let productsHTML = "";
-  productsData.forEach(product => {
-    const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
+const renderProduct = (product) => {
+  const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
 
-    productsHTML += `
-    <div class="card-container">
-      <div class="card">
-        <div class="card-front">
-          <div class="product-card-image" style="background-image: url(${backgroundImg})">
-            <h2 class="product-name">${nombre}</h2>
-          </div>
-          <div class="product-price">
-            <p>Precio</p>
-            <span>$${precio}</span>
-          </div>
-          <div class="product-duration">
-            <p>Duracion</p> 
-            <span>${duracion} noches</span> 
-          </div>
-          <div class="product-bot">
-            <div class="btn-flip">
-              <button class="btn-buy">Add</button>
-              <div class="flip-icon"><i class="fas fa-arrow-circle-right"></i></div>
-            </div>                  
-          </div>
+  return `
+  <div class="card-container">
+    <div class="card">
+      <div class="card-front">
+        <div class="product-card-image" style="background-image: url(${backgroundImg})">
+          <h2 class="product-name">${nombre}</h2>
         </div>
-        <div class="card-back">
-          <div class="itinerario">
-            <h2>Itinerario</h2>
-            <ul>
-              ${itinerario.map((dia) => `<li><span>${dia}</span></li>`).join('')}
-            </ul>
-          </div>
-          <div class="flip-icon"><i class="fas fa-arrow-circle-left"></i></div>
+        <div class="product-price">
+          <p>Precio</p>
+          <span>$${precio}</span>
+        </div>
+        <div class="product-duration">
+          <p>Duracion</p> 
+          <span>${duracion} noches</span> 
+        </div>
+        <div class="product-bot">
+          <div class="btn-flip">
+            <button class="btn-buy">Add</button>
+            <div class="flip-icon"><i class="fas fa-arrow-circle-right"></i></div>
+          </div>                  
         </div>
       </div>
+      <div class="card-back">
+        <div class="itinerario">
+          <h2>Itinerario</h2>
+          <ul>
+            ${itinerario.map((dia) => `<li><span>${dia}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div class="flip-icon"><i class="fas fa-arrow-circle-left"></i></div>
+      </div>
     </div>
+  </div>
   `;
-  });
-  products.innerHTML = productsHTML;
 }
 
-renderProduct(productsData);
-
-botonesCategorias.forEach(boton => {
-  boton.addEventListener("click", (e) => {
-
-      botonesCategorias.forEach(boton => boton.classList.remove("active"));
-      e.currentTarget.classList.add("active");
-
-      if (e.currentTarget.categoria != "todos") {
-          const productoCategoria = productsData.find(product => product.categoria === e.currentTarget.categoria);
-          tituloPrincipal.innerText = productoCategoria.categoria.nombre;
-          const productosBoton = productsData.filter(producto => producto.categoria === e.currentTarget.categoria);
-          renderProduct(productosBoton);
-      } else {
-          tituloPrincipal.innerText = "Todos los productos";
-          renderProduct(productos);
-      }
-
-  })
-});
-
-
-
-
 const renderDividedProducts = (container, index = 0) => {
-	container.innerHTML += productsController.dividedProducts[index]
-	  .map(renderProduct)
-	  .join("");
-  };
+  container.innerHTML = productsController.dividedProducts[index]
+    .map(renderProduct)
+    .join("");
+};
+
+products.forEach((productContainer, index) => {
+  renderDividedProducts(productContainer, index);
+});
 
 const renderFilteredProducts = (categoria) => {
 	const productsList = productsData.filter((product) => {
