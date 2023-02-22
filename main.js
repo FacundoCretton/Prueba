@@ -1,6 +1,6 @@
 // Contenedor de productos
 const products = document.querySelector('.categoria-container');
-// Selecciona todos los elementos con la clase ".flip-icon"
+
 
 
 const renderProduct = (product) => {
@@ -191,7 +191,8 @@ const rightArrow = document.querySelector('.right-arrow');
 
 let currentProductIndex = 0;
 const productCount = 6; 
-let totalProducts = products.length;
+let totalProducts = productCount;
+
 
 
 
@@ -202,6 +203,7 @@ const showNextProduct = (direction) => {
 	  currentProductIndex = (currentProductIndex - 1 + totalProducts) % totalProducts;
 	}
 	renderProduct(products[currentProductIndex]);
+	console.log("HOLAAAAAAAAAA");
 };
 
 function showPreviousProduct() {
@@ -211,6 +213,7 @@ function showPreviousProduct() {
 	}
 	renderProduct(products[currentProductIndex]);
 }
+
   
 rightArrow.addEventListener('click', () => {
 	showNextProduct("right");
