@@ -1,12 +1,40 @@
-// Contenedor de productos
-const products = document.querySelector('.categoria-container');
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+const categoryContainer = document.querySelector('.categoria-container');
 
+let currentProductIndex = 0;
+const productCount = 6; 
+let totalProducts = productCount;
 
+const showNextProduct = (direction) => {
+  if (direction === "right") {
+    currentProductIndex = (currentProductIndex + 1) % totalProducts;
+  } else {
+    currentProductIndex = (currentProductIndex - 1 + totalProducts) % totalProducts;
+  }
+  renderProduct(products[currentProductIndex]);
+};
+
+function showPreviousProduct() {
+  currentProductIndex--;
+  if (currentProductIndex < 0) {
+    currentProductIndex = productCount - 1;
+  }
+  renderProduct(products[currentProductIndex]);
+}
+
+rightArrow.addEventListener('click', () => {
+  showNextProduct("right");
+});
+
+leftArrow.addEventListener('click', () => {
+  showNextProduct("left");
+});
 
 const renderProduct = (product) => {
-	if (!product) {
-		return;
-	  }
+  if (!product) {
+    return;
+  }
   const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
 
   // crear la tarjeta de producto
@@ -47,6 +75,8 @@ const renderProduct = (product) => {
       </div>
     </div>
   `;
+  container.appendChild(productCard);
+
 
   // obtener el contenedor de categoría correspondiente
   const categoriaContainer = document.querySelector(`[data-categoria="${categoria}"]`);
@@ -55,6 +85,13 @@ const renderProduct = (product) => {
   categoriaContainer.appendChild(productCard);
 };
 
+
+// renderizar los productos iniciales
+const renderInitialProducts = () => {
+  for (let i = 0; i < productCount; i++) {
+    renderProduct(products[i]);
+  }
+};
 
 
 
@@ -144,58 +181,58 @@ window.addEventListener('load', function() {
 });
 // ------------------------------------------------------ARROW---------------------------------
 
-const leftArrow = document.querySelector('.left-arrow');
-const rightArrow = document.querySelector('.right-arrow');
+// const leftArrow = document.querySelector('.left-arrow');
+// const rightArrow = document.querySelector('.right-arrow');
 
 
-let currentProductIndex = 0;
-const productCount = 6; 
-let totalProducts = productCount;
+// let currentProductIndex = 0;
+// const productCount = 6; 
+// let totalProducts = productCount;
 
 
 
 
-const showNextProduct = (direction, container) => {
-  const cards = container.querySelectorAll('.card');
-  let startIndex = currentProductIndex;
+// const showNextProduct = (direction, container) => {
+//   const cards = container.querySelectorAll('.card');
+//   let startIndex = currentProductIndex;
 
-  if (direction === 'right') {
-    startIndex += 5;
-  } else {
-    startIndex -= 5;
-  }
+//   if (direction === 'right') {
+//     startIndex += 5;
+//   } else {
+//     startIndex -= 5;
+//   }
 
-  if (startIndex < 0) {
-    startIndex = 0;
-  } else if (startIndex >= cards.length) {
-    startIndex = cards.length - 1;
-  }
+//   if (startIndex < 0) {
+//     startIndex = 0;
+//   } else if (startIndex >= cards.length) {
+//     startIndex = cards.length - 1;
+//   }
 
-  for (let i = 0; i < cards.length; i++) {
-    if (i < startIndex || i >= startIndex + 5) {
-      cards[i].classList.add('hidden');
-    } else {
-      cards[i].classList.remove('hidden');
-    }
-  }
+//   for (let i = 0; i < cards.length; i++) {
+//     if (i < startIndex || i >= startIndex + 5) {
+//       cards[i].classList.add('hidden');
+//     } else {
+//       cards[i].classList.remove('hidden');
+//     }
+//   }
 
-  currentProductIndex = startIndex;
-};
+//   currentProductIndex = startIndex;
+// };
 
   
-rightArrow.addEventListener('click', () => {
-  showNextProduct("right", containers[i]);
-});
+// rightArrow.addEventListener('click', () => {
+//   showNextProduct("right", containers[i]);
+// });
 
-leftArrow.addEventListener('click', () => {
-  showNextProduct("left", containers[i]);
-});
+// leftArrow.addEventListener('click', () => {
+//   showNextProduct("left", containers[i]);
+// });
 
   
  
 const init = () => {
 	renderProducts();
-  
+  renderInitialProducts();
 	categories.addEventListener("click", applyFilter);
 	btnLoad.addEventListener("click", showMoreProducts);
 	barsBtn.addEventListener("click", toggleMenu);
