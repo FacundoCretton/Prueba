@@ -1,47 +1,26 @@
-const leftArrow = document.querySelector('.left-arrow');
-const rightArrow = document.querySelector('.right-arrow');
-const categoryContainer = document.querySelector('.categoria-container');
+// let productsData = []
 
-let currentProductIndex = 0;
-const productCount = 6; 
-let totalProducts = productCount;
+// Contenedor de productos
+const products = document.querySelector('.categoria-container');
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
+const tituloPrincipal = document.querySelector("#titulo-principal");
 
-const showNextProduct = (direction) => {
-  if (direction === "right") {
-    currentProductIndex = (currentProductIndex + 1) % totalProducts;
-  } else {
-    currentProductIndex = (currentProductIndex - 1 + totalProducts) % totalProducts;
-  }
-  renderProduct(products[currentProductIndex]);
-};
 
-function showPreviousProduct() {
-  currentProductIndex--;
-  if (currentProductIndex < 0) {
-    currentProductIndex = productCount - 1;
-  }
-  renderProduct(products[currentProductIndex]);
-}
 
-rightArrow.addEventListener('click', () => {
-  showNextProduct("right");
-});
+botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
+  aside.classList.remove("aside-visible");
+}))
 
-leftArrow.addEventListener('click', () => {
-  showNextProduct("left");
-});
+
+
 
 const renderProduct = (product) => {
-  if (!product) {
-    return;
-  }
+	// if (!product) {
+	// 	return;
+	//   }
   const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
 
-  // crear la tarjeta de producto
-  const productCard = document.createElement('div');
-  productCard.classList.add('product-cards');
-  productCard.dataset.categoria = categoria;
-  productCard.innerHTML = `
+	return `
     <div class="card-container">
       <div class="card">
         <div class="card-front">
@@ -75,24 +54,26 @@ const renderProduct = (product) => {
       </div>
     </div>
   `;
-  container.appendChild(productCard);
-
-
-  // obtener el contenedor de categoría correspondiente
-  const categoriaContainer = document.querySelector(`[data-categoria="${categoria}"]`);
-
-  // insertar la tarjeta de producto en el contenedor de categoría
-  categoriaContainer.appendChild(productCard);
 };
 
+botonesCategorias.forEach(boton => {
+  boton.addEventListener("click", (e) => {
 
-// renderizar los productos iniciales
-const renderInitialProducts = () => {
-  for (let i = 0; i < productCount; i++) {
-    renderProduct(products[i]);
-  }
-};
+      botonesCategorias.forEach(boton => boton.classList.remove("active"));
+      e.currentTarget.classList.add("active");
 
+      if (e.currentTarget.categoria != "todos") {
+          const productoCategoria = productsData.find(product => product.categoria === e.currentTarget.categoria);
+          tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+          const productosBoton = productsData.filter(producto => producto.categoria === e.currentTarget.categoria);
+          renderProduct(productosBoton);
+      } else {
+          tituloPrincipal.innerText = "Todos los productos";
+          renderProduct(productos);
+      }
+
+  })
+});
 
 
 
@@ -103,9 +84,9 @@ const renderDividedProducts = (container, index = 0) => {
 	  .join("");
   };
 
-const renderFilteredProducts = (category) => {
+const renderFilteredProducts = (categoria) => {
 	const productsList = productsData.filter((product) => {
-		return product.category === category;
+		return product.categoria === categoria;
 	});
 	products.innerHTML = productsList.map(renderProduct).join("");
 };
@@ -118,51 +99,51 @@ const renderProducts = (index = 0, categoria = undefined) => {
 	renderFilteredProducts(categoria);
 };
 
-const changeShowMoreBtnState = (categoria) => {
-	if (!categoria) {
-		btnLoad.classList.remove("hidden");
-		return;
-	}
-	btnLoad.classList.add("hidden");
-};
+// const changeShowMoreBtnState = (categoria) => {
+// 	if (!categoria) {
+// 		btnLoad.classList.remove("hidden");
+// 		return;
+// 	}
+// 	btnLoad.classList.add("hidden");
+// };
 
-const changeBtnActiveState = (selectedCategory) => {
-	const categories = [...categoriesList];
-	categories.forEach((categoryBtn) => {
-		if (categoryBtn.dataset.category !== selectedCategory) {
-			categoryBtn.classList.remove("active");
-			return;
-		}
-		categoryBtn.classList.add("active");
-	});
-};
+// const changeBtnActiveState = (selectedCategory) => {
+// 	const categories = [...categoriesList];
+// 	categories.forEach((categoryBtn) => {
+// 		if (categoryBtn.dataset.category !== selectedCategory) {
+// 			categoryBtn.classList.remove("active");
+// 			return;
+// 		}
+// 		categoryBtn.classList.add("active");
+// 	});
+// };
 
-const changeFilterState = (e) => {
-	const selectedCategory = e.target.dataset.category;
-	changeShowMoreBtnState(selectedCategory);
-	changeBtnActiveState(selectedCategory);
-};
+// const changeFilterState = (e) => {
+// 	const selectedCategory = e.target.dataset.category;
+// 	changeShowMoreBtnState(selectedCategory);
+// 	changeBtnActiveState(selectedCategory);
+// };
 
-const applyFilter = (e) => {
-	if (!e.target.classList.contains("category")) {
-		return;
-	} else {
-		changeFilterState(e);
-	}
-	if (!e.target.dataset.category) {
-		products.innerHTML = "";
-		renderProducts();
-	} else {
-		renderProducts(0, e.target.dataset.category);
-		productsController.nextProductsIndex = 1;
-	}
-};
+// const applyFilter = (e) => {
+// 	if (!e.target.classList.contains("category")) {
+// 		return;
+// 	} else {
+// 		changeFilterState(e);
+// 	}
+// 	if (!e.target.dataset.category) {
+// 		products.innerHTML = "";
+// 		renderProducts();
+// 	} else {
+// 		renderProducts(0, e.target.dataset.category);
+// 		productsController.nextProductsIndex = 1;
+// 	}
+// };
 
-const isLastIndexOf = () => {
-	return (
-		productsController.nextProductsIndex === productsController.productsLimit
-	);
-};
+// const isLastIndexOf = () => {
+// 	return (
+// 		productsController.nextProductsIndex === productsController.productsLimit
+// 	);
+// };
 
 
 
@@ -181,58 +162,40 @@ window.addEventListener('load', function() {
 });
 // ------------------------------------------------------ARROW---------------------------------
 
-// const leftArrow = document.querySelector('.left-arrow');
-// const rightArrow = document.querySelector('.right-arrow');
+// Obtener todas las categorías
+const categorias = document.querySelectorAll('.categoria-container');
+
+// Recorrer cada categoría y agregar los listeners a las flechas
+categorias.forEach(categoria => {
+  // Obtener los botones de flecha
+  const leftArrow = categoria.previousElementSibling.querySelector('.arrow-left');
+  const rightArrow = categoria.previousElementSibling.querySelector('.arrow-right');
+
+  // Obtener el contenedor de productos
+  const categoriaContainer = categoria;
+
+  // Calcular el ancho total de los productos
+  let productWidth = 0;
+  const products = categoriaContainer.children;
+  for (let i = 0; i < products.length; i++) {
+    productWidth += products[i].offsetWidth;
+  }
+
+  // Agregar listeners a las flechas
+  leftArrow.addEventListener('click', () => {
+    categoriaContainer.scrollLeft -= 300;
+  });
+
+  rightArrow.addEventListener('click', () => {
+    categoriaContainer.scrollLeft += 300;
+  });
+});
 
 
-// let currentProductIndex = 0;
-// const productCount = 6; 
-// let totalProducts = productCount;
-
-
-
-
-// const showNextProduct = (direction, container) => {
-//   const cards = container.querySelectorAll('.card');
-//   let startIndex = currentProductIndex;
-
-//   if (direction === 'right') {
-//     startIndex += 5;
-//   } else {
-//     startIndex -= 5;
-//   }
-
-//   if (startIndex < 0) {
-//     startIndex = 0;
-//   } else if (startIndex >= cards.length) {
-//     startIndex = cards.length - 1;
-//   }
-
-//   for (let i = 0; i < cards.length; i++) {
-//     if (i < startIndex || i >= startIndex + 5) {
-//       cards[i].classList.add('hidden');
-//     } else {
-//       cards[i].classList.remove('hidden');
-//     }
-//   }
-
-//   currentProductIndex = startIndex;
-// };
-
-  
-// rightArrow.addEventListener('click', () => {
-//   showNextProduct("right", containers[i]);
-// });
-
-// leftArrow.addEventListener('click', () => {
-//   showNextProduct("left", containers[i]);
-// });
-
-  
  
 const init = () => {
 	renderProducts();
-  renderInitialProducts();
+  
 	categories.addEventListener("click", applyFilter);
 	btnLoad.addEventListener("click", showMoreProducts);
 	barsBtn.addEventListener("click", toggleMenu);

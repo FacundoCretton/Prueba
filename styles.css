@@ -9,6 +9,7 @@
 
 body {
   background-color: #f5f5f5;
+  display: flex;
 }
 
 header {
@@ -127,6 +128,7 @@ header {
   flex-wrap: wrap;
   gap: 50px;
   position: relative;
+  white-space: nowrap; /* evita que la tarjeta se envuelva a la siguiente línea */
 }
 .products-container {
   display: flex;
@@ -136,6 +138,7 @@ header {
   gap: 20px;
   max-width: 1200px;
   width: 90%;
+  position: relative;
 }
 
 .categoria-container {
@@ -144,9 +147,8 @@ header {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  overflow: hidden;
-  width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .categoria-container-tit {
@@ -163,9 +165,7 @@ header {
   justify-content: center;
   width: 100%;
   overflow: hidden;
-  position: relative;
-  /* width: 450px; */
-  margin-right: 10px;
+  /* position: relative; */
 }
 .card-container {
   display: flex;
@@ -184,10 +184,12 @@ header {
   margin: 0 20px;
   background-color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  position: relative;
   perspective: 1000px;
   border-radius: 15px;
   border: 1px solid #808080;
+  /* position: absolute; */
+  /* left: 0;
+  top: 0; */
 }
 .card-front {
   width: 100%;
@@ -298,48 +300,115 @@ header {
 
 /* ----ARROWS---- */
 
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: white;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+/* ------------------------------About US---------------------------- */
+/* ABOUT US */
+#about-us {
+  /* display: flex; */
+  background: url(Assets/Img/About-Us-Img.jpg) no-repeat left;
+  background-size: 60%;
+  overflow: hidden;
+  padding: 50px 0;
 }
 
-.left-arrow {
-  left: 20px;
+.about-container {
+  width: 55%;
+  float: right;
+  background-color: #fdfdfd;
+  padding: 150px;
 }
 
-.right-arrow {
-  right: 20px;
+.about-container h2 {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 900;
 }
 
-.arrow:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+.about-text {
+  font-size: 13px;
+  color: #545454;
+  line-height: 30px;
+  text-align: justify;
+  margin-bottom: 20px;
 }
 
-.arrow:before {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
-  transform: rotate(45deg);
-}
-
-.arrow-left:before {
-  transform: rotate(-135deg);
-}
-
-.hidden {
+.hide {
   display: none;
 }
+
+.show {
+  display: flex;
+}
+
+.arrow {
+  font-size: 40px;
+  margin: 0 5px;
+  cursor: pointer;
+  color: #555;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  line-height: 19px;
+  text-align: center;
+  border-radius: 3px;
+}
+.arrow {
+  background: #222;
+  color: white;
+}
+/* -------- */
+.menu {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 0.5rem;
+}
+
+.boton-menu {
+  background-color: transparent;
+  border: 0;
+  color: var(green);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  padding: 1rem;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.boton-menu.active {
+  background-color: var(blue);
+  color: var(--clr-main);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  position: relative;
+}
+
+.boton-menu.active::before {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 2rem;
+  bottom: 100%;
+  right: 0;
+  background-color: transparent;
+  border-bottom-right-radius: 0.5rem;
+  box-shadow: 0 1rem 0 var(red);
+}
+
+.boton-menu.active::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 2rem;
+  top: 100%;
+  right: 0;
+  background-color: transparent;
+  border-top-right-radius: 0.5rem;
+  box-shadow: 0 -1rem 0 var(red);
+}
+
+/* .boton-menu > i.bi-hand-index-thumb-fill,
+.boton-menu > i.bi-hand-index-thumb {
+  transform: rotateZ(90deg);
+} */

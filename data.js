@@ -284,22 +284,6 @@ const productsController = {
 	dividedProducts: splitProducts(4),
 	nextProductsIndex: 0,
 	productsLimit: splitProducts(4).length,
-	showNextProduct: function() {
-	  const currentProductIndex = this.nextProductsIndex;
-	  const currentProduct = this.dividedProducts[currentProductIndex];
-  
-	  currentProduct.forEach(function(product) {
-		renderProduct(product);
-	  });
-  
-	  const previousProductIndex = currentProductIndex === 0 ? this.productsLimit - 1 : currentProductIndex - 1;
-	  const previousProduct = this.dividedProducts[previousProductIndex];
-  
-	  previousProduct.forEach(function(product) {
-		productContainer.removeChild(productContainer.firstChild);
-	  });
-  
-	  this.nextProductsIndex = currentProductIndex === this.productsLimit - 1 ? 0 : currentProductIndex + 1;
-	}
+	
 };
   
