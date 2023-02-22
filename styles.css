@@ -338,8 +338,3 @@ header {
 .hidden {
   display: none;
 }
-
-.rotate-icon {
-  transition: transform 0.8s;
-  transform: rotate(180deg);
-}

@@ -2,7 +2,7 @@
 const products = document.querySelector('.categoria-container');
 // Selecciona todos los elementos con la clase ".flip-icon"
 const arrow = document.querySelector(".arrow");
-
+console.log(products);
 const renderProduct = (product) => {
   const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
 
@@ -80,10 +80,10 @@ const renderProducts = (index = 0, categoria = undefined) => {
 
 const changeShowMoreBtnState = (categoria) => {
 	if (!categoria) {
-		arrow.classList.remove("hidden");
+		btnLoad.classList.remove("hidden");
 		return;
 	}
-	arrow.classList.add("hidden");
+	btnLoad.classList.add("hidden");
 };
 
 const changeBtnActiveState = (selectedCategory) => {
@@ -128,7 +128,7 @@ const showMoreProducts = () => {
 	renderProducts(productsController.nextProductsIndex);
 	productsController.nextProductsIndex++;
 	if (isLastIndexOf()) {
-		arrow.classList.add("hidden");
+		btnLoad.classList.add("hidden");
 	}
 };
 
@@ -187,6 +187,29 @@ window.addEventListener('load', function() {
   });
   
 });
+// ------------------------------------------------------ARROW--------------------
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+
+leftArrow.addEventListener('click', showPreviousProduct);
+rightArrow.addEventListener('click', showNextProduct);
+let currentProductIndex = 0;
+const productCount = 10; 
+
+function showNextProduct() {
+  currentProductIndex++;
+  if (currentProductIndex >= productCount) {
+    currentProductIndex = 0;
+  }
+  renderProduct(currentProductIndex);
+}
+function showPreviousProduct() {
+	currentProductIndex--;
+	if (currentProductIndex < 0) {
+	  currentProductIndex = productCount - 1;
+	}
+	renderProduct(currentProductIndex);
+  }
 
 const init = () => {
 	renderProducts();
