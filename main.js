@@ -6,9 +6,39 @@ const aside = document.querySelector("aside");
 
 
 
-botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
-  aside.classList.remove("aside-visible");
-}))
+botonesCategorias.forEach(boton => {
+  boton.addEventListener("click", (e) => {
+
+      botonesCategorias.forEach(boton => boton.classList.remove("active"));
+      e.currentTarget.classList.add("active");
+
+      const categoriaSeleccionada = e.currentTarget.dataset.categoria;
+
+      if (categoriaSeleccionada) {
+        const productosFiltrados = productsData.filter(product => product.categoria.nombre === categoriaSeleccionada);
+        tituloPrincipal.innerText = categoriaSeleccionada;
+        renderFilteredProducts(productosFiltrados);
+      } else {
+        tituloPrincipal.innerText = "Todos los productos";
+        renderDividedProducts(products, 0);
+      }
+      
+  });
+});
+
+const renderFilteredProducts = (productos, categoriaSeleccionada) => {
+  const containers = document.querySelectorAll('.categoria-container');
+  containers.forEach((container) => {
+    container.innerHTML = productos.map(renderProduct).join('');
+    console.log("Hiciste click en el botón de la categoría: ", categoriaSeleccionada);
+
+  });
+};
+
+
+
+
+
 
 const renderProduct = (product) => {
   const { id, nombre, precio, duracion, itinerario, backgroundImg, categoria } = product;
@@ -59,20 +89,27 @@ products.forEach((productContainer, index) => {
   renderDividedProducts(productContainer, index);
 });
 
-const renderFilteredProducts = (categoria) => {
-	const productsList = productsData.filter((product) => {
-		return product.categoria === categoria;
-	});
-	products.innerHTML = productsList.map(renderProduct).join("");
+// const renderFilteredProducts = (categoria) => {
+// 	const productsList = productsData.filter((product) => {
+// 		return product.categoria === categoria;
+// 	});
+// 	products.innerHTML = productsList.map(renderProduct).join("");
+// };
+
+const renderProducts = (categoria = "todos") => {
+  if (categoria === "todos") {
+    // Si la categoría es "todos", mostrar todos los productos
+    tituloPrincipal.innerText = "Todos los productos";
+    renderDividedProducts(productsController, 0);
+  } else {
+    // Si la categoría es distinta a "todos", filtrar los productos y mostrarlos
+    const productosBoton = productsData.filter(producto => producto.categoria.nombre === categoria);
+    const categoriaNombre = productosBoton.length > 0 ? productosBoton[0].categoria.nombre : "";
+    tituloPrincipal.innerText = categoriaNombre;
+    renderFilteredProducts(productosBoton);
+  }
 };
 
-const renderProducts = (index = 0, categoria = undefined) => {
-	if (!categoria) {
-		renderDividedProducts(index);
-		return;
-	}
-	renderFilteredProducts(categoria);
-};
 
 // const changeShowMoreBtnState = (categoria) => {
 // 	if (!categoria) {
