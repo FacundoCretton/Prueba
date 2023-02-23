@@ -1,32 +1,42 @@
-// Contenedor de productos
 const products = document.querySelectorAll('.categoria-container');
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
-const aside = document.querySelector("aside");
 const categoriaDefault = 'todos';
 
 
-botonesCategorias.forEach(boton => {
-  boton.addEventListener("click", (e) => {
+window.addEventListener('load', function() {
 
-    botonesCategorias.forEach(boton => boton.classList.remove("active"));
-    e.currentTarget.classList.add("active");
+  // Agregamos la clase active al botón correspondiente a la categoría por defecto
+  const defaultButton = document.querySelector(`[data-categoria="${categoriaDefault}"]`);
+  defaultButton.classList.add('active');
 
-    const categoriaSeleccionada = e.currentTarget.dataset.categoria;
+  // Renderizamos los productos por defecto
+  const productosFiltrados = categoriaDefault === "todos" ? 
+    productsData : 
+    productsData.filter(product => product.categoria === categoriaDefault);
+    tituloPrincipal.innerText = categoriaDefault;
+    renderFilteredProducts(productosFiltrados, categoriaDefault);
+    botonesCategorias.forEach(boton => {
+      boton.addEventListener("click", (e) => {
+      botonesCategorias.forEach(boton => boton.classList.remove("active"));
+      e.currentTarget.classList.add("active");
 
-    const productosFiltrados = categoriaSeleccionada === "todos" ? 
-      productsData : 
-      productsData.filter(product => product.categoria === categoriaSeleccionada);
+      const categoriaSeleccionada = e.currentTarget.dataset.categoria;
 
-    if (categoriaSeleccionada) {
-      tituloPrincipal.innerText = categoriaSeleccionada;
-      renderFilteredProducts(productosFiltrados);
-    } else {
-      tituloPrincipal.innerText = "Todos los productos";
-      renderDividedProducts(productsData, 0);
-    }
+      const productosFiltrados = categoriaSeleccionada === "todos" ? 
+        productsData : 
+        productsData.filter(product => product.categoria === categoriaSeleccionada);
+
+      if (categoriaSeleccionada) {
+        tituloPrincipal.innerText = categoriaSeleccionada;
+        renderFilteredProducts(productosFiltrados, categoriaSeleccionada);
+      } else {
+        tituloPrincipal.innerText = "Todos los productos";
+        renderDividedProducts(productsData, 0);
+      }
+    });
   });
-}); 
+});
 
 
 
@@ -93,12 +103,7 @@ products.forEach((productContainer, index) => {
   renderDividedProducts(productContainer, index);
 });
 
-// const renderFilteredProducts = (categoria) => {
-// 	const productsList = productsData.filter((product) => {
-// 		return product.categoria === categoria;
-// 	});
-// 	products.innerHTML = productsList.map(renderProduct).join("");
-// };
+
 
 const renderProducts = (categoria = "todos") => {
   if (categoria === "todos") {
@@ -115,56 +120,6 @@ const renderProducts = (categoria = "todos") => {
 };
 
 
-// const changeShowMoreBtnState = (categoria) => {
-// 	if (!categoria) {
-// 		btnLoad.classList.remove("hidden");
-// 		return;
-// 	}
-// 	btnLoad.classList.add("hidden");
-// };
-
-// const changeBtnActiveState = (selectedCategory) => {
-// 	const categories = [...categoriesList];
-// 	categories.forEach((categoryBtn) => {
-// 		if (categoryBtn.dataset.category !== selectedCategory) {
-// 			categoryBtn.classList.remove("active");
-// 			return;
-// 		}
-// 		categoryBtn.classList.add("active");
-// 	});
-// };
-
-// const changeFilterState = (e) => {
-// 	const selectedCategory = e.target.dataset.category;
-// 	changeShowMoreBtnState(selectedCategory);
-// 	changeBtnActiveState(selectedCategory);
-// };
-
-// const applyFilter = (e) => {
-// 	if (!e.target.classList.contains("category")) {
-// 		return;
-// 	} else {
-// 		changeFilterState(e);
-// 	}
-// 	if (!e.target.dataset.category) {
-// 		products.innerHTML = "";
-// 		renderProducts();
-// 	} else {
-// 		renderProducts(0, e.target.dataset.category);
-// 		productsController.nextProductsIndex = 1;
-// 	}
-// };
-
-// const isLastIndexOf = () => {
-// 	return (
-// 		productsController.nextProductsIndex === productsController.productsLimit
-// 	);
-// };
-
-
-
-
-
 window.addEventListener('load', function() {
   const flipIcons = document.querySelectorAll('.flip-icon');
 
@@ -176,6 +131,7 @@ window.addEventListener('load', function() {
   });
   
 });
+
 // ------------------------------------------------------ARROW---------------------------------
 
 const arrowLeft = document.querySelector('.arrow-left');
@@ -200,7 +156,7 @@ arrowRight.addEventListener('click', () => {
 const init = () => {
 	renderProducts();
   renderFilteredProducts(productsData.filter(product => product.categoria === categoriaDefault));
-
+  window.addEventListener('load',productosFiltrados )
 	categories.addEventListener("click", applyFilter);
 	btnLoad.addEventListener("click", showMoreProducts);
 	barsBtn.addEventListener("click", toggleMenu);
@@ -208,6 +164,7 @@ const init = () => {
 	barsMenu.addEventListener("click", closeOnClick);
 	window.addEventListener("scroll", closeOnScroll);
 	overlay.addEventListener("click", closeOnOverlayClick);
+  
 };
 
 init();
