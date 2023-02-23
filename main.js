@@ -3,28 +3,32 @@ const products = document.querySelectorAll('.categoria-container');
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
 const aside = document.querySelector("aside");
-
+const categoriaDefault = 'todos';
 
 
 botonesCategorias.forEach(boton => {
   boton.addEventListener("click", (e) => {
 
-      botonesCategorias.forEach(boton => boton.classList.remove("active"));
-      e.currentTarget.classList.add("active");
+    botonesCategorias.forEach(boton => boton.classList.remove("active"));
+    e.currentTarget.classList.add("active");
 
-      const categoriaSeleccionada = e.currentTarget.dataset.categoria;
+    const categoriaSeleccionada = e.currentTarget.dataset.categoria;
 
-      if (categoriaSeleccionada) {
-        const productosFiltrados = productsData.filter(product => product.categoria.nombre === categoriaSeleccionada);
-        tituloPrincipal.innerText = categoriaSeleccionada;
-        renderFilteredProducts(productosFiltrados);
-      } else {
-        tituloPrincipal.innerText = "Todos los productos";
-        renderDividedProducts(products, 0);
-      }
-      
+    const productosFiltrados = categoriaSeleccionada === "todos" ? 
+      productsData : 
+      productsData.filter(product => product.categoria === categoriaSeleccionada);
+
+    if (categoriaSeleccionada) {
+      tituloPrincipal.innerText = categoriaSeleccionada;
+      renderFilteredProducts(productosFiltrados);
+    } else {
+      tituloPrincipal.innerText = "Todos los productos";
+      renderDividedProducts(productsData, 0);
+    }
   });
-});
+}); 
+
+
 
 const renderFilteredProducts = (productos, categoriaSeleccionada) => {
   const containers = document.querySelectorAll('.categoria-container');
@@ -174,40 +178,29 @@ window.addEventListener('load', function() {
 });
 // ------------------------------------------------------ARROW---------------------------------
 
-// // Obtener todas las categorías
-// const categorias = document.querySelectorAll('.categoria-container');
+const arrowLeft = document.querySelector('.arrow-left');
+const arrowRight = document.querySelector('.arrow-right');
 
-// // Recorrer cada categoría y agregar los listeners a las flechas
-// categorias.forEach(categoria => {
-//   // Obtener los botones de flecha
-//   const leftArrow = categoria.previousElementSibling.querySelector('.arrow-left');
-//   const rightArrow = categoria.previousElementSibling.querySelector('.arrow-right');
+arrowLeft.addEventListener('click', () => {
+  if (currentPage > 0) {
+    currentPage--;
+    renderDividedProducts(products, currentPage);
+  }
+});
 
-//   // Obtener el contenedor de productos
-//   const categoriaContainer = categoria;
-
-//   // Calcular el ancho total de los productos
-//   let productWidth = 0;
-//   const products = categoriaContainer.children;
-//   for (let i = 0; i < products.length; i++) {
-//     productWidth += products[i].offsetWidth;
-//   }
-
-//   // Agregar listeners a las flechas
-//   leftArrow.addEventListener('click', () => {
-//     categoriaContainer.scrollLeft -= 300;
-//   });
-
-//   rightArrow.addEventListener('click', () => {
-//     categoriaContainer.scrollLeft += 300;
-//   });
-// });
+arrowRight.addEventListener('click', () => {
+  if (currentPage < totalPages - 1) {
+    currentPage++;
+    renderDividedProducts(products, currentPage);
+  }
+});
 
 
  
 const init = () => {
 	renderProducts();
-  
+  renderFilteredProducts(productsData.filter(product => product.categoria === categoriaDefault));
+
 	categories.addEventListener("click", applyFilter);
 	btnLoad.addEventListener("click", showMoreProducts);
 	barsBtn.addEventListener("click", toggleMenu);
