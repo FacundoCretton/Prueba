@@ -120,15 +120,13 @@ header {
 
 /* -----Products----- */
 #products {
-  width: 100%;
   display: flex;
-  padding: 70px 30px;
-  justify-content: space-around;
-  color: #2e2e2e;
-  flex-wrap: wrap;
-  gap: 50px;
-  position: relative;
-  white-space: nowrap; /* evita que la tarjeta se envuelva a la siguiente línea */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  max-width: 1200px;
+  width: 100%;
 }
 .products-container {
   display: flex;
@@ -150,15 +148,14 @@ header {
   overflow: hidden;
 }
 
-.product-cards {
+/* .product-cards {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   overflow: hidden;
   flex-direction: column;
-  /* position: relative; */
-}
+} */
 .card-container {
   display: flex;
   width: 100%;
@@ -168,6 +165,7 @@ header {
   gap: 20px;
   margin-top: 20px;
   transition: transform 0.3s ease-in-out;
+  flex-direction: column;
 }
 
 .card {
@@ -179,9 +177,7 @@ header {
   perspective: 1000px;
   border-radius: 15px;
   border: 1px solid #808080;
-  /* position: absolute; */
-  /* left: 0;
-  top: 0; */
+  flex-direction: column;
 }
 .card-front {
   width: 100%;

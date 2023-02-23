@@ -79,14 +79,14 @@ const renderProducts = (index=0, categoria = undefined) => {
 }
 
 window.addEventListener('load', function() {
-  const flipIcons = document.querySelectorAll('.flip-icon');
+   const flipIcons = document.querySelectorAll('.flip-icon');
 
-  flipIcons.forEach(flipIcon => {
-    flipIcon.addEventListener('click', function() {
-      const card = flipIcon.closest('.card');
-      card.classList.toggle('flipped');
-    });
-  });
+   flipIcons.forEach(flipIcon => {
+     flipIcon.addEventListener('click', function() {
+       const card = flipIcon.closest('.card');
+       card.classList.toggle('flipped');
+     });
+   });
   
 });
 
