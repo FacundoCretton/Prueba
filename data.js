@@ -285,3 +285,5 @@ const productsController = {
 	nextProductsIndex: 1,
 	productsLimit: splitProducts(6).length,
 };
+
+  
