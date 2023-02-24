@@ -108,7 +108,7 @@ const flipCard = () => {
   flipIcons.forEach(flipIcon => {
     flipIcon.addEventListener('click', function() {
       const card = this.closest('.card');
-      if (!card) return; // return if card is not found
+      if (!card) return; // 
 
       card.classList.toggle('flipped');
     });
