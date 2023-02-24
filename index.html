@@ -24,8 +24,15 @@
             <li><a href="#">Iniciar Sesion</a></li>
           </ul>
         </nav>
-      </div>
-    </header>
+
+        <div class="cart-label">
+          <i class="fa-solid fa-cart-flatbed-suitcase"></i>
+        </div>
+        <button id="toggle-theme" class="theme-button">
+          <i class="fas fa-sun" id="sun-icon"></i>
+          <i class="fas fa-moon" id="moon-icon"></i>
+        </button>
+      </header>
     <main>
 
       <section id="hero">
@@ -41,29 +48,39 @@
       <!-- ----Productos---- -->
 
       <section id="products">
-        <nav class="navbar bts-fil">
+        <nav class=" bts-fil">
           <ul class="menu">
             <li>
-              <button id="todos" class="boton-menu boton-categoria active" ><i class="bi bi-hand-index-thumb-fill"></i> Todos los productos</button>
+              <button id="todos" class="boton-menu boton-categoria active" > Todos</button>
             </li>
             <li>
-              <button id="Sudamerica" class="boton-menu boton-categoria" data-categoria="Sudamerica"><i class="bi bi-hand-index-thumb"></i> Sudamerica</button>
+              <button id="Sudamerica" class="boton-menu boton-categoria" data-categoria="Sudamerica"><img class ="btn-ico "src="/Assets/Img/Iconos botones/South_America.ico"> Sudamerica
+                <ul class="submenu">
+                  <li><a href="#" class="filtro-link" data-filtro="mayor-precio">Filtrar por precio Mayor</a></li>
+                  <li><a href="#" class="filtro-link" data-filtro="menor-precio">Filtrar por precio Menor</a></li>
+                  <li><a href="#" class="filtro-link" data-filtro="mayor-duracion">Filtrar por duración Mayor</a></li>              
+                  <li><a href="#" class="filtro-link" data-filtro="menor-duracion">Filtrar por duración Menor</a></li>
+                </ul>
+                
+                
+                
             </li>
             <li>
-              <button id="Europa" class="boton-menu boton-categoria" data-categoria="Europa"><i class="bi bi-hand-index-thumb"></i> Europa</button>
+              <button id="Europa" class="boton-menu boton-categoria" data-categoria="Europa"><img class ="btn-ico " src="/Assets/Img/Iconos botones/Europe.ico"> Europa
+                <ul class="submenu">
+                  <li><a href="#" class="filtro-precio">Filtrar por precio</a></li>
+                  <li><a href="#" class="filtro-duracion">Filtrar por duración</a></li>
+                </ul></button>
             </li>
             <li>
-              <button id="Caribe" class="boton-menu boton-categoria" data-categoria="Caribe"><i class="bi bi-hand-index-thumb"></i> Caribe</button>
+              <button id="Caribe" class="boton-menu boton-categoria" data-categoria="Caribe"><img class="btn-ico" src="/Assets/Img/Iconos botones/Central_America_.ico"> Caribe
+                <ul class="submenu">
+                  <li><a href="#" class="filtro-precio">Filtrar por precio</a></li>
+                  <li><a href="#" class="filtro-duracion">Filtrar por duración</a></li>
+                </ul></button>
             </li>
           </ul>
         </nav>
-        <div class="product-acc">
-          <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
-          <p>
-            <span class="arrow arrow-left">&#139;</span>
-            <span class="arrow arrow-right">&#155;</span>
-          </p>
-        </div>
         <div class="product-container">
 
         </div>
@@ -86,6 +103,12 @@
       
       
     </main>
+    <footer>
+      <div class="columna1"></div>
+      <div class="columna2"></div>
+      <div class="columna3"></div>
+      <div class="columna4"></div>
+    </footer>
     <script src="/data.js"></script>
     <script src="/main.js"></script>
   </body>
