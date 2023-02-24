@@ -5,7 +5,7 @@ const categoriaDefault = 'todos';
 const categoriaList = document.querySelector(".bts-fil")
 const btnLoad = document.querySelector(".btn-load");
 const flipIcons = document.querySelectorAll('.flip-icon');
-
+const card = document.querySelector('.card');
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const saveLocalStorage = (cartList) => {
@@ -115,7 +115,6 @@ const flipCard =()=> {
 
 
 
-
 const applyFilter = (e) => {
 	if (!e.target.classList.contains("boton-categoria")) {
 		return;
@@ -154,3 +153,7 @@ const init =()=>{
   window.addEventListener('load', flipCard);
 }
 init();
+
+
+
+
