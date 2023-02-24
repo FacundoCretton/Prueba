@@ -102,16 +102,19 @@ const changeFilterState = (e) => {
 	changeBtnActiveState(categoriaSeleccionada);
 };
 
-const flipCard =()=> {
+const flipCard = () => {
   const flipIcons = document.querySelectorAll('.flip-icon');
 
   flipIcons.forEach(flipIcon => {
     flipIcon.addEventListener('click', function() {
-      const card = flipIcon.closest('.card');
+      const card = this.closest('.card');
+      if (!card) return; // return if card is not found
+
       card.classList.toggle('flipped');
     });
   });
 }
+
 
 
 
@@ -143,7 +146,7 @@ const showMoreProducts = () => {
 	if (isLastIndexOf()) {
 		btnLoad.classList.add("hidden");
 	}
-  // flipCard()
+  flipCard()
 };
 
 const init =()=>{

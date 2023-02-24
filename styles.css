@@ -164,7 +164,9 @@ header {
   width: 250px;
   height: 370px;
   margin: 0 20px;
-  background-color: white;
+  /* background-color: white; */
+  background-color: transparent; /* establecemos el background-color como transparente */
+
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   perspective: 1000px;
   border-radius: 15px;
@@ -263,9 +265,9 @@ header {
   padding: 20px;
   backface-visibility: hidden;
   transition: transform 0.5s ease-in-out;
-  background: #f97bbf;
-  transform-style: preserve-3d; /* Nueva propiedad */
-  transform: rotateY(180deg); /* Nueva propiedad */
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  border-radius: 15px;
 }
 
 .itinerario {
@@ -284,7 +286,9 @@ header {
   transform: rotateY(-180deg);
   visibility: hidden; /* <-- Agregado para ocultar la vista frontal durante la animación */
 }
-
+.card.flipped {
+  background-color: transparent; /* el background-color como transparente también cuando la tarjeta está girada */
+}
 .card.flipped .card-back {
   display: block;
   transform: rotateY(0);
