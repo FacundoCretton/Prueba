@@ -120,30 +120,28 @@ header {
 
 /* -----Products----- */
 #products {
-  width: 100%;
   display: flex;
-  padding: 70px 30px;
-  justify-content: space-around;
-  color: #2e2e2e;
-  flex-wrap: wrap;
-  gap: 50px;
-  position: relative;
-  /* white-space: nowrap; evita que la tarjeta se envuelva a la siguiente línea */
-}
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 0;
   max-width: 1200px;
-  width: 90%;
-  position: relative;
+  width: 100%;
+}
+.product-container {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 40px 0;
+  max-width: 1200px;
+  margin-top: 20px;
+  display: flex;
 }
 
-.categoria-container {
+.product-acc {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
@@ -151,31 +149,15 @@ header {
   overflow: hidden;
 }
 
-.categoria-container-tit {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.product-cards {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  overflow: hidden;
-  /* position: relative; */
-}
 .card-container {
   display: flex;
-  width: 100%;
   max-width: 1200px;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
   margin-top: 20px;
   transition: transform 0.3s ease-in-out;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .card {
@@ -187,14 +169,12 @@ header {
   perspective: 1000px;
   border-radius: 15px;
   border: 1px solid #808080;
-  /* position: absolute; */
-  /* left: 0;
-  top: 0; */
+  flex-direction: column;
 }
 .card-front {
   width: 100%;
   height: 100%;
-  position: absolute;
+  /* position: absolute; */
   backface-visibility: hidden;
 }
 .product-card-image {
@@ -267,7 +247,7 @@ header {
   margin-right: 70px;
 }
 .card-back {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;
@@ -297,7 +277,18 @@ header {
   display: block;
   transform: rotateY(0);
 }
+.btn-load {
+  background: none;
+  border: 1px solid var(--electric);
+  padding: 10px 35px;
+  color: var(--bg-white);
+  border-radius: 10px;
+  cursor: pointer;
+}
 
+.bts-fil {
+  background: #2e2e2e;
+}
 /* ----ARROWS---- */
 
 /* ------------------------------About US---------------------------- */
@@ -331,7 +322,7 @@ header {
   margin-bottom: 20px;
 }
 
-.hide {
+.hidden {
   display: none;
 }
 
@@ -358,7 +349,6 @@ header {
 /* -------- */
 .menu {
   display: flex;
-  /* flex-direction: column; */
   gap: 0.5rem;
 }
 
@@ -412,3 +402,9 @@ header {
 .boton-menu > i.bi-hand-index-thumb {
   transform: rotateZ(90deg);
 } */
+
+.active {
+  background: red;
+}
+
+/* ---------------------------------------------------------------------------------- */
