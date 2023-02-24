@@ -125,9 +125,49 @@ const flipCard = () => {
 
 
 
+const applyFilter = (e) => {
+  if (!e.target.classList.contains("boton-categoria")) {
+    return;
+  } else {
+    changeFilterState(e);
+  }
+
+  if (!e.target.dataset.categoria) {
+    products.innerHTML = "";
+    renderProducts();
+  } else {
+    renderProducts(0, e.target.dataset.categoria);
+    productsController.nextProductsIndex = 1;
+  }
+
+  flipCard();
+};
+
+const filterByPrice = (orden, products) => {
+  products.sort((a, b) => {
+    if (orden === "mayor") {
+      return b.precio - a.precio;
+    } else if (orden === "menor") {
+      return a.precio - b.precio;
+    }
+  });
+  renderProducts(0, null, products);
+};
+
+const filterByDuration = (orden, products) => {
+  products.sort((a, b) => {
+    if (orden === "mayor") {
+      return b.duration - a.duration;
+    } else if (orden === "menor") {
+      return a.duration - b.duration;
+    }
+  });
+  renderProducts(0, null, products);
+};
+
 const applyFilters = (e) => {
   e.preventDefault();
-  e.stopPropagation(); // Agregar esta línea para evitar la propagación del evento
+  e.stopPropagation();
   if (!e.target.classList.contains("boton-categoria")) {
     return;
   } else {
@@ -144,14 +184,12 @@ const applyFilters = (e) => {
 
   flipCard();
 
-  // Seleccionar todos los enlaces del submenu con la clase "filtro-link"
   const filtroLinks = document.querySelectorAll(".filtro-link");
 
-  // Agregar un event listener a cada enlace del submenu
   filtroLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-
-      const filtro = e.target.dataset.filtro;
+      e.preventDefault();
+      const filtro = link.dataset.filtro;
       switch (filtro) {
         case "mayor-precio":
           filterByPrice("mayor", productsData);
@@ -172,30 +210,6 @@ const applyFilters = (e) => {
   });
 };
 
-
-// Función para filtrar productos por precio
-const filterByPrice = (orden, products) => {
-  products.sort((a, b) => {
-    if (orden === "mayor") {
-      return b.precio - a.precio;
-    } else if (orden === "menor") {
-      return a.precio - b.precio;
-    }
-  });
-  renderProducts(0, null, products);
-};
-
-
-const filterByDuration = (orden, products) => {
-  products.sort((a, b) => {
-    if (orden === "mayor") {
-      return b.duration - a.duration;
-    } else if (orden === "menor") {
-      return a.duration - b.duration;
-    }
-  });
-  renderProducts(0, null, products);
-};
 
 
 const isLastIndexOf = () => {
