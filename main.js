@@ -77,6 +77,7 @@ const renderFilteredProducts = (categoria) => {
 
 
 
+
 const renderProducts = (index=0, categoria = undefined) => {
   if (!categoria) {
     renderDividedProducts(index);
@@ -84,6 +85,8 @@ const renderProducts = (index=0, categoria = undefined) => {
     
   }
   renderFilteredProducts(categoria)
+  // renderCategoryProducts(categoria, index);
+
 }
 const changeShowMoreBtnState = (categoria) => {
 	if (!categoria) {
@@ -121,6 +124,31 @@ const flipCard = () => {
     });
   });
 }
+
+// const renderCategoryProducts = (categoria, index = 0) => {
+//   const productsList = productsData.filter((product) => {
+//     return product.categoria === categoria;
+//   });
+//   const dividedProducts = splitProducts(productsController.dividedProducts[index].length);
+
+//    if (index >= productsController.productsLimit) {
+//      return;
+//    }
+  
+//    products.innerHTML = dividedProducts[index].map(renderProduct).join("");
+// }
+const renderCategoryProducts = (categoria, index = 0) => {
+  const productsList = productsData.filter((product) => {
+    return product.categoria === categoria;
+  });
+
+  const startIndex = index * productsController.productsLimit;
+  const endIndex = startIndex + productsController.productsLimit;
+  const productsToRender = productsList.slice(startIndex, endIndex);
+
+  products.innerHTML = productsToRender.map(renderProduct).join("");
+}
+
 
 
 
@@ -181,7 +209,12 @@ toggleTheme = () => {
 
   }
 }
-
+// botonesCategorias.forEach((btn) => {
+//   btn.addEventListener("click", function (event) {
+//     const categoria = event.target.dataset.categoria;
+//     renderCategoryProducts(categoria);
+//   });
+// });
 
 
 
