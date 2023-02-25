@@ -5,7 +5,7 @@
 		precio: 450,
 		duracion: 8,
 		itinerario: ['Día 1: Buenos Aires', 'Día 2: Navegación', 'Día 3: Montevideo, Uruguay', 'Día 4: Puerto Madryn, Argentina', 'Día 5: Ushuaia, Argentina', 'Día 6: Punta Arenas, Chile', 'Día 7: Puerto Montt, Chile', 'Día 8: Valparaíso, Chile'],
-		backgroundImg: '/Assets/Img/id1.jpg',
+		backgroundImg: '/Assets/Img/id1.webp',
 		categoria: 'Sudamerica'
 	},
 	{
@@ -14,7 +14,7 @@
 		precio: 370,
 		duracion: 8,
 		itinerario: ['Día 1: Buenos Aires', 'Día 2: Navegación', 'Día 3: Puerto Madryn, Argentina', 'Día 4: Ushuaia, Argentina', 'Día 5: Torres del Paine, Chile', 'Día 6: El Calafate, Argentina', 'Día 7: El Chaltén, Argentina', 'Día 8: Puerto Natales, Chile',]
-		,backgroundImg: '/Assets/Img/id2.jpg',
+		,backgroundImg: '/Assets/Img/id2.webp',
 		categoria: 'Sudamerica'
 	},
 	{
@@ -23,7 +23,7 @@
 		precio: 560,
 		duracion:8,
 		itinerario: ['Día 1: Buenos Aires', 'Día 2: Navegación', 'Día 3: Punta del Este, Uruguay', 'Día 4: Isla de Lobos, Uruguay', 'Día 5: Porto Belo, Brasil', 'Día 6: Ilhabela, Brasil', 'Día 7: Búzios, Brasil', 'Día 8: Río de Janeiro, Brasil'],
-		backgroundImg: '/Assets/Img/id3.jpg',
+		backgroundImg: '/Assets/Img/id3.webp',
 		categoria: 'Sudamerica'
 	},
 	{
@@ -32,7 +32,7 @@
 		precio: 430,
 		duracion: 8,
 		itinerario: ['Día 1: Buenos Aires', 'Día 2: Navegación', 'Día 3: Santos, Brasil', 'Día 4: Ilhéus, Brasil', 'Día 5: Salvador de Bahía, Brasil', 'Día 6: Recife, Brasil', 'Día 7: Natal, Brasil', 'Día 8: Fortaleza, Brasil'],
-		backgroundImg: '/Assets/Img/id4.jpg',
+		backgroundImg: '/Assets/Img/id4.webp',
 		categoria: 'Sudamerica'
 	},
 	{
@@ -41,7 +41,7 @@
 		precio: 620,
 		duracion: 9,
 		itinerario: ['Día 1: Buenos Aires, Argentina', 'Día 2: Navegación', 'Día 3: Cartagena de Indias, Colombia', 'Día 4: Santa Marta, Colombia', 'Día 5: Trujillo, Perú', 'Día 6: Lima, Perú', 'Día 7: Pisco, Perú', 'Día 8: Navegación', 'Día 9: Montevideo, Uruguay'],
-		backgroundImg: '/Assets/Img/id5.jpg',
+		backgroundImg: '/Assets/Img/id5.webp',
 		categoria: 'Sudamerica'
 	},
 	{
@@ -50,7 +50,7 @@
 		precio: 615,
 		duracion: 10,
 		itinerario: ['Día 1: Buenos Aires, Argentina',  'Día 2: Navegación',  'Día 3: Puerto Madryn, Argentina',  'Día 4: Ushuaia, Argentina',  'Día 5: Cabo de Hornos, Chile',  'Día 6: Puerto Williams, Chile',  'Día 7: Punta Arenas, Chile',  'Día 8: Navegación',  'Día 9: Islas Malvinas',  'Día 10: Navegación'],
-		backgroundImg: '/Assets/Img/id6.jpg',
+		backgroundImg: '/Assets/Img/id6.webp',
 		categoria: 'Sudamerica'
 	},
 	{
@@ -281,7 +281,7 @@ const splitProducts = (size) => {
 };
 
 const productsController = {
-	dividedProducts: splitProducts(3),
+	dividedProducts: splitProducts(6),
 	nextProductsIndex: 1,
-	productsLimit: splitProducts(3).length,
+	productsLimit: splitProducts(6).length,
 };

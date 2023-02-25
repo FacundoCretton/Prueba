@@ -4,37 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>NuevoMundo.com</title>
+    <link rel="icon" href="/assets/Img/Logo Proyecto.svg" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
-
+  </head>
   <body>
     <header>
-        <img
-          class="logo"
-          src="./Assets/Img/Logo Proyecto.svg"
-          alt="Logo de la pagina"
-        />
-        <nav class="navbar">
-          <ul class="navbar-list">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Sobre Nosotros</a></li>
-            <li><a href="#">Viajes</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="#">Iniciar Sesion</a></li>
-          </ul>
-        </nav>
-
-        <div class="cart-label">
-          <i class="fa-solid fa-cart-flatbed-suitcase"></i>
-        </div>
-        <button id="toggle-theme" class="theme-button">
-          <i class="fas fa-sun" id="sun-icon"></i>
-          <i class="fas fa-moon" id="moon-icon"></i>
-        </button>
-      </header>
+      <img
+      class="logo"src="./Assets/Img/Logo Proyecto.svg" alt="Logo de la pagina"/>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Sobre Nosotros</a></li>
+          <li><a href="#">Viajes</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Iniciar Sesion</a></li>
+        </ul>
+      </nav>
+      <div class="cart-label">
+        <i class="fa-solid fa-cart-flatbed-suitcase"></i>
+      </div>
+      <button id="toggle-theme" class="theme-button">
+        <i class="fas fa-sun" id="sun-icon"></i>
+        <i class="fas fa-moon" id="moon-icon"></i>
+      </button>
+    </header>
     <main>
-
       <section id="hero">
         <div class="hero-container">
           <div class="info">
@@ -54,33 +50,31 @@
               <button id="todos" class="boton-menu boton-categoria active" > Todos</button>
             </li>
             <li>
-              <button id="Sudamerica" class="boton-menu boton-categoria sudamerica" data-categoria="Sudamerica"><img class ="btn-ico "src="/Assets/Img/Iconos botones/South_America.ico"> Sudamerica
-                <ul class="submenu">
-                  <li><a href="#" class="filtro-link" data-filtro="mayor-precio">Filtrar por precio Mayor</a></li>
-                  <li><a href="#" class="filtro-link" data-filtro="menor-precio">Filtrar por precio Menor</a></li>
-                  <li><a href="#" class="filtro-link" data-filtro="mayor-duracion">Filtrar por duración Mayor</a></li>              
-                  <li><a href="#" class="filtro-link" data-filtro="menor-duracion">Filtrar por duración Menor</a></li>
-                </ul>
+              <button id="Sudamerica" class="boton-menu boton-categoria" data-categoria="Sudamerica"><img class ="btn-ico "src="/Assets/Img/Iconos botones/South_America.ico"> Sudamerica
+                <!-- <ul class="submenu">
+                  <li><a href="#" class="filtro-precio-mayor">Filtrar por precio Mayor</a></li>
+                  <li><a href="#" class="filtro-precio-menor">Filtrar por precio Menor</a></li>
+                  <li><a href="#" class="filtro-duracion-mayor">Filtrar por duración Mayor</a></li>              
+                  <li><a href="#" class="filtro-duracion-menor">Filtrar por duración Menor</a></li>
+                </ul> -->
               </button>
-              
-              <button id="Europa" class="boton-menu boton-categoria europa" data-categoria="Europa"><img class ="btn-ico " src="/Assets/Img/Iconos botones/Europe.ico"> Europa
-                <ul class="submenu">
-                  <li><a href="#" class="filtro-link" data-filtro="mayor-precio">Filtrar por precio Mayor</a></li>
-                  <li><a href="#" class="filtro-link" data-filtro="menor-precio">Filtrar por precio Menor</a></li>
-                  <li><a href="#" class="filtro-link" data-filtro="mayor-duracion">Filtrar por duración Mayor</a></li>              
-                  <li><a href="#" class="filtro-link" data-filtro="menor-duracion">Filtrar por duración Menor</a></li>
-                </ul>
+            </li>
+            <li>
+              <button id="Europa" class="boton-menu boton-categoria" data-categoria="Europa"><img class ="btn-ico " src="/Assets/Img/Iconos botones/Europe.ico"> Europa
+                <!-- <ul class="submenu">
+                  <li><a href="#" class="filtro-precio">Filtrar por precio</a></li>
+                  <li><a href="#" class="filtro-duracion">Filtrar por duración</a></li>
+                </ul> -->
               </button>
-              
-              <button id="Caribe" class="boton-menu boton-categoria caribe" data-categoria="Caribe"><img class="btn-ico" src="/Assets/Img/Iconos botones/Central_America_.ico"> Caribe
-                <ul class="submenu">
-                  <li><a href="#" class="filtro-link" data-filtro="mayor-precio">Filtrar por precio Mayor</a></li>
-                  <li><a href="#" class="filtro-link" data-filtro="menor-precio">Filtrar por precio Menor</a></li>
-                  <li><a href="#" class="filtro-link" data-filtro="mayor-duracion">Filtrar por duración Mayor</a></li>              
-                  <li><a href="#" class="filtro-link" data-filtro="menor-duracion">Filtrar por duración Menor</a></li>
-                </ul>
+            </li>
+            <li>
+              <button id="Caribe" class="boton-menu boton-categoria" data-categoria="Caribe"><img class="btn-ico" src="/Assets/Img/Iconos botones/Central_America_.ico"> Caribe
+                <!-- <ul class="submenu">
+                  <li><a href="#" class="filtro-precio">Filtrar por precio</a></li>
+                  <li><a href="#" class="filtro-duracion">Filtrar por duración</a></li>
+                </ul> -->
               </button>
-              
+            </li>
           </ul>
         </nav>
         <div class="product-container">
@@ -92,25 +86,30 @@
    
       </section>
           <!-- ABOUT US -->
-    <section id="about-us">
-      <div class="about-container">
-        <h2>About Us</h2>
-        <p class="about-text">
-          Bienvenidos a Nuevo Mundo.com, la mejor agencia de cruceros para sus vacaciones soñadas. Ofrecemos una variedad de itinerarios de cruceros para tu proxima aventura por Sudamerica, el Caribe o Europa. En Nuevo Mundo.com, nos comprometemos a ofrecerte el mejor servicio, para que su experiencia sea segura y confortable. Nuestro equipo de profesionales está a tu disposición para ayudarte con cualquier cosa que necesites durante tus vacaciones. Somos la mejor agencia de cruceros de Argentina para tus viajes y estamos dispuestos a ayudarlo a crear memorias para toda la vida. ¡Bienvenido a Nuevo Mundo.com!
-        </p>
-      </div>
-    </section>
-      
-
-      
-      
+      <section id="about-us">
+        <div class="about-container">
+          <h2>About Us</h2>
+          <p class="about-text">
+            Bienvenidos a Nuevo Mundo.com, la mejor agencia de cruceros para sus vacaciones soñadas. Ofrecemos una variedad de itinerarios de cruceros para tu proxima aventura por Sudamerica, el Caribe o Europa. En Nuevo Mundo.com, nos comprometemos a ofrecerte el mejor servicio, para que su experiencia sea segura y confortable. Nuestro equipo de profesionales está a tu disposición para ayudarte con cualquier cosa que necesites durante tus vacaciones. Somos la mejor agencia de cruceros de Argentina para tus viajes y estamos dispuestos a ayudarlo a crear memorias para toda la vida. ¡Bienvenido a Nuevo Mundo.com!
+          </p>
+        </div>
+      </section>
     </main>
     <footer>
-      <div class="columna1"></div>
-      <div class="columna2"></div>
-      <div class="columna3"></div>
-      <div class="columna4"></div>
+      <div class="container-footer">	
+        <div class="logo-footer">
+          <img src="/Assets/Img/Logo Proyecto.svg" alt="Logo Nuevo Mundo">
+        </div>
+        <div class="redes-footer">
+          <a href="#"><i class="fab fa-facebook-f icon-redes-footer"></i></a>
+          <a href="#"><i class="fab fa-google-plus-g icon-redes-footer"></i></a>
+          <a href="#"><i class="fab fa-instagram icon-redes-footer"></i></a>
+        </div>
+        <hr>
+        <h4>© 2023 Nuevo Mundo.Com - Todos los Derechos Reservados</h4>
+      </div>
     </footer>
+
     <script src="/data.js"></script>
     <script src="/main.js"></script>
   </body>

@@ -1,0 +1,24 @@
+@media screen and (max-width: 1200px) {
+  .about-container {
+    padding: 80px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #about-us {
+    background-size: 100%;
+    padding: 100px 40px;
+  }
+  .about-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #about-us {
+    padding: 0;
+  }
+  .about-container {
+    padding: 60px;
+  }
+}

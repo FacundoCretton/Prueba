@@ -115,7 +115,7 @@ const flipCard = () => {
   flipIcons.forEach(flipIcon => {
     flipIcon.addEventListener('click', function() {
       const card = this.closest('.card');
-      if (!card) return; // 
+      if (!card) return;  
 
       card.classList.toggle('flipped');
     });
@@ -126,91 +126,20 @@ const flipCard = () => {
 
 
 const applyFilter = (e) => {
-  if (!e.target.classList.contains("boton-categoria")) {
-    return;
-  } else {
-    changeFilterState(e);
-  }
-
-  if (!e.target.dataset.categoria) {
-    products.innerHTML = "";
-    renderProducts();
-  } else {
-    renderProducts(0, e.target.dataset.categoria);
-    productsController.nextProductsIndex = 1;
-  }
-
-  flipCard();
+	if (!e.target.classList.contains("boton-categoria")) {
+		return;
+	} else {
+		changeFilterState(e);
+	}
+	if (!e.target.dataset.categoria) {
+		products.innerHTML = "";
+		renderProducts();
+	} else {
+		renderProducts(0, e.target.dataset.categoria);
+		productsController.nextProductsIndex = 1;
+	}
+  flipCard()
 };
-
-const filterByPrice = (orden, products) => {
-  products.sort((a, b) => {
-    if (orden === "mayor") {
-      return b.precio - a.precio;
-    } else if (orden === "menor") {
-      return a.precio - b.precio;
-    }
-  });
-  renderProducts(0, null, products);
-};
-
-const filterByDuration = (orden, products) => {
-  products.sort((a, b) => {
-    if (orden === "mayor") {
-      return b.duration - a.duration;
-    } else if (orden === "menor") {
-      return a.duration - b.duration;
-    }
-  });
-  renderProducts(0, null, products);
-};
-
-const applyFilters = (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  if (!e.target.classList.contains("boton-categoria")) {
-    return;
-  } else {
-    changeFilterState(e);
-  }
-
-  if (!e.target.dataset.categoria) {
-    products.innerHTML = "";
-    renderProducts();
-  } else {
-    renderProducts(0, e.target.dataset.categoria);
-    productsController.nextProductsIndex = 1;
-  }
-
-  flipCard();
-
-  const filtroLinks = document.querySelectorAll(".filtro-link");
-
-  filtroLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const filtro = link.dataset.filtro;
-      switch (filtro) {
-        case "mayor-precio":
-          filterByPrice("mayor", productsData);
-          break;
-        case "menor-precio":
-          filterByPrice("menor", productsData);
-          break;
-        case "mayor-duracion":
-          filterByDuration("mayor", productsData);
-          break;
-        case "menor-duracion":
-          filterByDuration("menor", productsData);
-          break;
-        default:
-          break;
-      }
-    });
-  });
-};
-
-
 
 const isLastIndexOf = () => {
 	return (
@@ -258,7 +187,7 @@ toggleTheme = () => {
 
 const init =()=>{
   renderProducts()
-  categoriaList.addEventListener("click", applyFilters);
+  categoriaList.addEventListener("click", applyFilter);
 	btnLoad.addEventListener("click", showMoreProducts);
   window.addEventListener('load', flipCard);
   toggleThemeButton.addEventListener('click', toggleTheme);
@@ -267,6 +196,7 @@ const init =()=>{
   if (mode === "dark") {
     toggleTheme();
   }
+
 }
 init();
 
